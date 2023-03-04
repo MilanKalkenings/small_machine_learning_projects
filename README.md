@@ -68,3 +68,17 @@ the skip connections concatenate the outputs of downwards blocks with outputs of
 - texts are split into tokens ((sub-) words)
 - each token is masked with a certain probability (usually 15%)
 - model "fills the gaps" with tokens (simple classification to check if the predicted token is correct)
+
+
+## carlini wagner
+- resnet trained on image net
+- carlini wagner attack to create an adversarial example of a gold fish to be misclassified as a flamingo
+- target class $t$: flamingo
+- change $x$ using gradient descent so that its predicted class probability is at least $\kappa$ bigger than that of the second most likely class
+- makes $x$ and $x_0$ more similar to each other, if the softmax output is of the desired form
+- carlini wagner criterion: $max(-\kappa, \underset{j\neq t}{max}(p_j)-p_t) + ||x-x_0||^2_2$
+
+![result](https://user-images.githubusercontent.com/70267800/222924302-8e901e6d-092e-43d3-a249-1b3f8a269982.png)
+
+
+
