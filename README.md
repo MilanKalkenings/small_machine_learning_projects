@@ -80,5 +80,19 @@ the skip connections concatenate the outputs of downwards blocks with outputs of
 
 ![result](https://user-images.githubusercontent.com/70267800/222924302-8e901e6d-092e-43d3-a249-1b3f8a269982.png)
 
+## faster r-cnn object detection
+- detecting litter objects on forest floor
+- created data set
+- fine tuned faster r-cnn pretrained on COCO
+
+### dataset 
+- made photos of forest floor
+- most photos contain at least one litter object (plastic, metal, paper, glass)
+- annotated litter objects with bounding boxes (corner coordinates)
+- photos contain benign confounders, i.e. natural objects that are easily confused with litter (reflecting puddles, colorful blossoms and berries, ...)
+
+![all](https://user-images.githubusercontent.com/70267800/226890943-c7033e17-96a2-4cd2-b8e3-b496267a3bd3.png)
+
+
 
 
