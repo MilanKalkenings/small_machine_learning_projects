@@ -90,6 +90,7 @@ the skip connections concatenate the outputs of downwards blocks with outputs of
 - most photos contain at least one litter object (plastic, metal, paper, glass)
 - annotated litter objects with bounding boxes (corner coordinates)
 - photos contain benign confounders, i.e. natural objects that are easily confused with litter (reflecting puddles, colorful blossoms and berries, ...)
+- annotated data is available for free use on https://www.kaggle.com/datasets/milankalkenings/litter-on-forest-floor-object-detection
 
 ![all](https://user-images.githubusercontent.com/70267800/226890943-c7033e17-96a2-4cd2-b8e3-b496267a3bd3.png)
 
