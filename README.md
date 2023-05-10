@@ -117,3 +117,13 @@ the skip connections concatenate the outputs of downwards blocks with outputs of
 - objective function = mean distance to cluster center + $\alpha$ class impurity per cluster
 
 ![results](https://user-images.githubusercontent.com/70267800/236207413-5b3ca6a7-4a30-48aa-a4da-e3e4aa04b0a3.png)
+
+
+## autoencoder
+- training an autoencoder on MNIST and CIFAR100
+- if an autoencoder is trained to reconstruct instances of data set X, it is likely to achieve good results on reconstructing instances of data set Y, if X and Y are similar enough. 
+- autoencoders can (to some degree) learn *general reconstruction abilities* on equal data types
+- pretraining an *encoder* within an autoencoder, and later using it for as a feature learner in a classifier can speed up the training process, because the encoder already learned how to extract general features in the given data
+- a well trained autoencoder can be used to generate new data points that still contain the data signal, but add further noise (similar to data augmentation)
+
+![mnist_prediction](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/57d70258-c6c0-4cb6-ad52-e95729fadb1c)
