@@ -108,3 +108,9 @@
     - a well trained autoencoder can be used to generate new data points that still contain the data signal, but add further noise (similar to data augmentation)
 
 ![mnist_prediction](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/57d70258-c6c0-4cb6-ad52-e95729fadb1c)
+
+# Positional Encoding
+- visualization of positional encodings as used in Transformers
+
+![pe](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/379a8d22-0a63-4a74-8fcf-937d84c8702f)
+
