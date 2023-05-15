@@ -37,5 +37,5 @@ numpy_array = torch.squeeze(x.data).permute(1, 2, 0).numpy()
 plt.imshow(numpy_array)
 plt.title(f"misclassified as flamingo, {len(preds)} carlini wagner iterations")
 
-plt.savefig("../../monitoring/carlini_wagner/result.png")
+plt.savefig("../../monitoring/carlini_wagner_attack/result.png")
 torch.save(torch.tensor(preds), "../../monitoring/carlini_wagner/preds")
