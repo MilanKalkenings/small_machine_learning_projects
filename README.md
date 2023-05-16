@@ -114,3 +114,9 @@
 
 ![pe](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/379a8d22-0a63-4a74-8fcf-937d84c8702f)
 
+
+# Consistency Regularization
+- unlabeled data points still belong to the same category as perturbated versions of themselves
+- regularizer $\lambda ||f(x) - f(x_{augmented}||^2_2$ forces the model to predict similar outputs for $x$ and $x_{augmented}$ 
+
+![vary_lambda](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/d689c51b-d168-4da2-86f2-26d55e53231c)
