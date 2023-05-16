@@ -1,4 +1,4 @@
-# transfer learning with U-Net
+# Transfer Learning with U-Net
 - implementation of a (small) unet architecture
     - U-Nets have two main components:
         - **down:** spatial resolution $\downarrow$, channel resolution $\uparrow$. Creates dense input representation
