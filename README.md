@@ -120,3 +120,10 @@
 - regularizer $\lambda ||f(x) - f(x_{augmented})||^2_2$ forces the model to predict similar outputs for $x$ and $x_{augmented}$ 
 
 ![vary_lambda](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/75c0e4dd-c9c9-484f-8135-8d86b0fc305e)
+
+# Multiple Instance Learning
+- weakly supervised method: data instances come in bags, only the labels of few instances are known
+- classification: if a bag contains a "2", the bag is of positive class, else of negative class
+- attention pooling can be used to learn focusing on informative instances
+![pos](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/27151a89-dda6-4a8f-9e8c-ad3c155b38d3)
+
