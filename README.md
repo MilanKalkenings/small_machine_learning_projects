@@ -1,3 +1,18 @@
+# learning_rate_range_test
+implementation of learning rate range test (lrrt).
+
+Learning Rate Range Test" is a stable algorithm for determining learning rates in your deep learning projects.
+
+1. define a set of lr candidates
+2. train from the same checkpoint on few batches with each lr candidate
+3. fit a line through the batch losses for each lr candidate
+4. return the lr candidate with the steepest negative line slope
+
+A naive comparison between the initial batch loss and the last batch loss can fail to detect the best lr due to the variance in the batch losses.
+
+![lrrt](https://github.com/MilanKalkenings/learning_rate_range_test/assets/70267800/bf0c6907-3bb6-45b5-a378-73d6231d532b)
+
+
 # Transfer Learning with U-Net
 - implementation of a (small) unet architecture
     - U-Nets have two main components:
