@@ -8,39 +8,7 @@
 3. fit a line through the batch losses for each lr candidate
 4. return the lr candidate with the steepest negative line slope
 
-![lrrt](https://github.com/MilanKalkenings/learning_rate_range_test/assets/70267800/bf0c6907-3bb6-45b5-a378-73d6231d532b)
-
-
-# Transfer Learning with U-Net
-- implementation of a (small) unet architecture
-    - U-Nets have two main components:
-        - **down:** spatial resolution $\downarrow$, channel resolution $\uparrow$. Creates dense input representation
-        - **up:** spatial resolution $\uparrow$, channel resolution $\downarrow$. Output is often of same (spatial) resolution as down-input.
-    - skip-connections (concatenation) between up and down blocks of same resolution improve gradient flow to early layers
-- pretraining of the down part with image classification using a classification head
-- fine tuning on image segmentation data in two stages:
-  1. adjusting upwards part with frozen pretrained downwards part
-  2. end-to-end fine tuning of the downwards part and the upwards part
- 
-# MIMO Classification
-- implementation of a MIMO (Multi-Input Multi-Output) Ensemble
-    - implicit ensemble that learns independent subnetworks within one neural network
-    - exploits network capacity
-    - M ensemble predictions with a single forward pass
-    - few more time and space complexity (less than 1%), but can converge in independent subnetworks with decorrelated errors/high disagreement
-    - M ensemble predictions allow uncertainty measure
-    - MIMO paper: https://openreview.net/pdf?id=OGg9XnKxFAH
-- cifar10 preprocessing for MIMO ensembles
-- my presentation slides about the MIMO paper
-- my seminar paper reviewing the MIMO paper
-
-# Monte Carlo Dropout 
-- implementation of a monte carlo dropout CNN on MNIST
-    - drops out certain activations not only during training but also in inference
-    - multiple forward passes create ensemble predictions that can be averaged to increase the generalization ability
-    - mc dropout paper: https://arxiv.org/pdf/1506.02142.pdf
-- performed 10 runs to compare monte carlo ensembles of different size with a normal dropout baseline
-![mcd_accuracies](https://user-images.githubusercontent.com/70267800/213738311-6a15cfe2-e859-4809-aad2-c9d925c783b4.png)
+![lrrt](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/819fa710-5619-424d-9cf7-53385b7abbd8)
 
 # Cotton Embeddings with TripletMarginLoss
 - implementation of a multihead resnet
@@ -60,6 +28,25 @@
 
 ![results_debug](https://user-images.githubusercontent.com/70267800/217192469-80f763b7-78fc-4b50-8052-f558b8d64971.png)
 
+# MIMO Classification
+- implementation of a MIMO (Multi-Input Multi-Output) Ensemble
+    - implicit ensemble that learns independent subnetworks within one neural network
+    - exploits network capacity
+    - M ensemble predictions with a single forward pass
+    - few more time and space complexity (less than 1%), but can converge in independent subnetworks with decorrelated errors/high disagreement
+    - M ensemble predictions allow uncertainty measure
+    - MIMO paper: https://openreview.net/pdf?id=OGg9XnKxFAH
+- cifar10 preprocessing for MIMO ensembles
+- my presentation slides about the MIMO paper
+- my seminar paper reviewing the MIMO paper
+
+# Monte Carlo Dropout 
+- implementation of a monte carlo dropout CNN on MNIST
+    - drops out certain activations not only during training but also in inference
+    - multiple forward passes create ensemble predictions that can be averaged to increase the generalization ability
+    - mc dropout paper: https://arxiv.org/pdf/1506.02142.pdf
+- performed 10 runs to compare monte carlo ensembles of different size with a normal dropout baseline
+![mcd_accuracies](https://user-images.githubusercontent.com/70267800/213738311-6a15cfe2-e859-4809-aad2-c9d925c783b4.png)
 
 # BERT MLM
 - fine tuning of a pretrained bert model with masked language modeling (mlm)
@@ -91,6 +78,16 @@
 
 ![all](https://user-images.githubusercontent.com/70267800/226890943-c7033e17-96a2-4cd2-b8e3-b496267a3bd3.png)
 
+# Transfer Learning with U-Net
+- implementation of a (small) unet architecture
+    - U-Nets have two main components:
+        - **down:** spatial resolution $\downarrow$, channel resolution $\uparrow$. Creates dense input representation
+        - **up:** spatial resolution $\uparrow$, channel resolution $\downarrow$. Output is often of same (spatial) resolution as down-input.
+    - skip-connections (concatenation) between up and down blocks of same resolution improve gradient flow to early layers
+- pretraining of the down part with image classification using a classification head
+- fine tuning on image segmentation data in two stages:
+  1. adjusting upwards part with frozen pretrained downwards part
+  2. end-to-end fine tuning of the downwards part and the upwards part
 
 # Self Training
 - given: few labeled data points, many unlabeled data points (from approx. same distribution)
