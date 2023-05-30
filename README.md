@@ -139,7 +139,8 @@
     - only the labels of few instances are known
     - predictions are made on bag level
 - binary classification: bag is of positive class, if it contains a "2", else bag is of negative class
-- attention pooling can be used to learn focusing on informative instances
+- attention pooling can be used to deduct instance level predictions
+    - model pays high attention to instances of positive class (even to those that are not labeled)
 - mil-attention-pooling paper: http://proceedings.mlr.press/v80/ilse18a/ilse18a.pdf
 ![pos](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/27151a89-dda6-4a8f-9e8c-ad3c155b38d3)
 
