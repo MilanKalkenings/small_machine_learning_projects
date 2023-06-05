@@ -82,7 +82,7 @@ print("f1 test", f1_test)
 print("accuracy test", acc_test)
 
 
-# ensembling
+# stacking ensemble
 estimators = [
     ("rf", random_forest),  # reuse
     ("svc", SVC()),
