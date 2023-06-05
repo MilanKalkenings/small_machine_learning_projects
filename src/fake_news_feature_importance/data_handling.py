@@ -1,5 +1,6 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 from typing import Tuple, List
 import regex as re
 import string
@@ -11,6 +12,12 @@ class DataHandler:
         x_clean = self.clean(x=x)
         x_final = self.engineer_features(x=x_clean)
         x_train, x_test, y_train, y_test = train_test_split(x_final, y, test_size=0.2)
+
+        # fit scaler on train, transform on train and test (no data snooping)
+        scaler = StandardScaler()
+        scaler.fit(X=x_train)
+        x_train.loc[:, :] = scaler.transform(x_train)
+        x_test.loc[:, :] = scaler.transform(x_test)
         self.x_train = x_train
         self.x_test = x_test
         self.y_train = y_train
