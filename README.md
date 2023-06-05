@@ -121,6 +121,19 @@
 
 ![mnist_prediction](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/57d70258-c6c0-4cb6-ad52-e95729fadb1c)
 
+# Fake News Feature Importance
+- simple feature engineering with tabular data
+    - number of words (title and body)
+    - number of exclamation marks (title and body)
+    - number of question marks (title and body)
+    - lexical diversity (title and body)
+    - $\frac{\text{number of title words}}{\text{number of title words} + \text{number of body words}}$
+- feature importance evaluation with random forest
+- very good resuls can already be achieved by using only 1 feature
+
+![f1](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/acc58d9c-1ec0-4be0-812c-9a758eca1aa5)
+
+
 # Positional Encoding
 - visualization of positional encodings as used in Transformers
 
