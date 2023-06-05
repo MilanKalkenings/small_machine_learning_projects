@@ -129,7 +129,8 @@
     - lexical diversity (title and body)
     - $\frac{\text{number of title words}}{\text{number of title words} + \text{number of body words}}$
 - feature importance evaluation with random forest
-- very good resuls can already be achieved by using only 1 feature
+- good resuls can already be achieved by using only 1 feature
+- further sklearn mechanics used (stacking ensemble, gridsearch)
 
 ![f1](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/acc58d9c-1ec0-4be0-812c-9a758eca1aa5)
 
