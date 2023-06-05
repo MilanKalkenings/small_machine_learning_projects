@@ -24,15 +24,17 @@ plt.tight_layout()
 plt.savefig(monitoring_path + "/correlation")
 plt.clf()  # clean
 
-# sklearn random forest
+# training
 random_forest = RandomForestClassifier(random_state=1)
 random_forest.fit(X=x_train, y=y_train)
 preds_test = random_forest.predict(X=x_test)
 
+# test scores
 accuracy_test = accuracy_score(y_true=y_test, y_pred=preds_test)
 f1_test = f1_score(y_true=y_test, y_pred=preds_test)
 print("f1 test", f1_test, "accuracy test", accuracy_test)
 
+# feature importance
 feature_importances = pd.Series(random_forest.feature_importances_, index=x_train.columns).sort_values(ascending=False)
 feature_importances.plot()
 plt.title(f"random forest feature importance; test f1: {round(f1_test, 2)}")
@@ -40,18 +42,22 @@ plt.xticks(rotation=90)
 plt.savefig(monitoring_path + "/feature_importance")
 plt.clf()
 
-f1_scores = []
+# iteratively add features and calculate score
+f1_scores = [0]
+x_ticks = ["no features"]
 features_used = []
-for feature in feature_importances.index:
-    features_used.append(feature)
+for i in range(len(feature_importances)):
+    x_ticks.append("add " + feature_importances.index[i] + "\n(importance " + str(round(feature_importances[i], 2)) + ")")
+    features_used.append(feature_importances.index[i])
 
     random_forest = RandomForestClassifier(random_state=1)
     random_forest.fit(X=x_train[features_used], y=y_train)
     preds_test = random_forest.predict(X=x_test[features_used])
     f1_scores.append(f1_score(y_true=y_test, y_pred=preds_test))
 
-plt.plot(range(1, len(f1_scores) + 1), f1_scores)
+plt.plot(x_ticks, f1_scores)
 plt.title("fake news detection with random forest")
+plt.xticks(rotation=90)
 plt.ylabel("test f score")
 plt.xlabel("number of features used")
 plt.savefig(monitoring_path + "/f1")
