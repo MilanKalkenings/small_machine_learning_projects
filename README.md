@@ -38,8 +38,6 @@
 ![mixed_smoothgrad_alt](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/9945a7c0-7e4f-4a37-a0a3-466fca83a3d0)
 
 
->>>>>>> 3939c7e6cedff2c4bb24d5bf2fa75c228ea7760f
-
 # MIMO Classification
 - implementation of a MIMO (Multi-Input Multi-Output) Ensemble
     - implicit ensemble that learns independent subnetworks within one neural network
