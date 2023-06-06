@@ -30,8 +30,9 @@
 
 # SmoothGrad CAM
 - implementation of smoothgrad for class activation maps (CAM)
-    - for a given class, CAM represents the input elements that lead to the strongest activation for the class
-    - smoothgrad: todo
+    - CAMs show the importance of the individual input elements for the activation for the respective class
+    - CAMs are based on the gradient of a class activation w.r.t. the input $\frac{\partial f_\theta(x)_i}{\partial x_i}$
+    - smoothgrad leads to better CAMs by averaging over the gradients for $n$ noisy versions of the input
 - smoothgrad paper: https://arxiv.org/pdf/1706.03825.pdf
 
 ![mixed_smoothgrad](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/035e887a-84be-49b4-8c44-3ed066bb0322)
