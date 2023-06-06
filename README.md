@@ -35,7 +35,8 @@
     - smoothgrad leads to better CAMs by averaging over the gradients for $n$ noisy versions of the input
 - smoothgrad paper: https://arxiv.org/pdf/1706.03825.pdf
 
-![mixed_smoothgrad](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/035e887a-84be-49b4-8c44-3ed066bb0322)
+![mixed_smoothgrad_alt](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/9945a7c0-7e4f-4a37-a0a3-466fca83a3d0)
+
 
 
 # MIMO Classification
