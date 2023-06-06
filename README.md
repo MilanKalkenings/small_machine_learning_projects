@@ -28,6 +28,19 @@
 
 ![results_debug](https://user-images.githubusercontent.com/70267800/217192469-80f763b7-78fc-4b50-8052-f558b8d64971.png)
 
+<<<<<<< HEAD
+=======
+# SmoothGrad CAM
+- implementation of smoothgrad for class activation maps (CAM)
+    - CAMs show the importance of the individual input elements for the activation for the respective class
+    - CAMs are based on the gradient of a class activation w.r.t. the input $\frac{\partial f_\theta(x)_i}{\partial x_i}$
+    - smoothgrad leads to better CAMs by averaging over the gradients for $n$ noisy versions of the input
+- smoothgrad paper: https://arxiv.org/pdf/1706.03825.pdf
+
+![mixed_smoothgrad_alt](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/9945a7c0-7e4f-4a37-a0a3-466fca83a3d0)
+
+
+>>>>>>> 3939c7e6cedff2c4bb24d5bf2fa75c228ea7760f
 
 # MIMO Classification
 - implementation of a MIMO (Multi-Input Multi-Output) Ensemble
