@@ -28,8 +28,6 @@
 
 ![results_debug](https://user-images.githubusercontent.com/70267800/217192469-80f763b7-78fc-4b50-8052-f558b8d64971.png)
 
-<<<<<<< HEAD
-=======
 # SmoothGrad CAM
 - implementation of smoothgrad for class activation maps (CAM)
     - CAMs show the importance of the individual input elements for the activation for the respective class
