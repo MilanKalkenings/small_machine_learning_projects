@@ -1,3 +1,12 @@
+# SmoothGrad CAM
+- implementation of regular class activation maps (CAM) and smoothgrad
+    - CAMs show the importance of the individual input elements for the activation for the respective class
+    - CAMs are based on the gradient of a class activation w.r.t. the input $\frac{\partial f_\theta(x)_i}{\partial x_i}$
+    - smoothgrad leads to better CAMs by averaging over the gradients for $n$ noisy versions of the input
+- smoothgrad paper: https://arxiv.org/pdf/1706.03825.pdf
+
+![mixed_smoothgrad](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/5663e4a4-bca8-4931-9fe3-a00049b17a0d)
+
 # learning rate range test
 - implementation of learning rate range test (lrrt)
 - stable algorithm for determining learning rates (and other hyperparameters) in deep learning projects
@@ -27,16 +36,6 @@
     - find $n$ so that $n$ is the **most similar** embedding to $a$ of **different class**
 
 ![results_debug](https://user-images.githubusercontent.com/70267800/217192469-80f763b7-78fc-4b50-8052-f558b8d64971.png)
-
-# SmoothGrad CAM
-- implementation of smoothgrad for class activation maps (CAM)
-    - CAMs show the importance of the individual input elements for the activation for the respective class
-    - CAMs are based on the gradient of a class activation w.r.t. the input $\frac{\partial f_\theta(x)_i}{\partial x_i}$
-    - smoothgrad leads to better CAMs by averaging over the gradients for $n$ noisy versions of the input
-- smoothgrad paper: https://arxiv.org/pdf/1706.03825.pdf
-
-![mixed_smoothgrad_alt](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/9945a7c0-7e4f-4a37-a0a3-466fca83a3d0)
-
 
 # MIMO Classification
 - implementation of a MIMO (Multi-Input Multi-Output) Ensemble
