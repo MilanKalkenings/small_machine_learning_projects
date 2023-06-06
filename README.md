@@ -28,6 +28,7 @@
 
 ![results_debug](https://user-images.githubusercontent.com/70267800/217192469-80f763b7-78fc-4b50-8052-f558b8d64971.png)
 
+
 # MIMO Classification
 - implementation of a MIMO (Multi-Input Multi-Output) Ensemble
     - implicit ensemble that learns independent subnetworks within one neural network
