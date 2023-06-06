@@ -28,6 +28,15 @@
 
 ![results_debug](https://user-images.githubusercontent.com/70267800/217192469-80f763b7-78fc-4b50-8052-f558b8d64971.png)
 
+# SmoothGrad CAM
+- implementation of smoothgrad for class activation maps (CAM)
+    - for a given class, CAM represents the input elements that lead to the strongest activation for the class
+    - smoothgrad: todo
+- smoothgrad paper: https://arxiv.org/pdf/1706.03825.pdf
+
+![mixed_smoothgrad](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/035e887a-84be-49b4-8c44-3ed066bb0322)
+
+
 # MIMO Classification
 - implementation of a MIMO (Multi-Input Multi-Output) Ensemble
     - implicit ensemble that learns independent subnetworks within one neural network
