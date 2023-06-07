@@ -1,7 +1,7 @@
 # SmoothGrad CAM
 - implementation of regular class activation maps (CAM) and smoothgrad
     - CAMs show the importance of the individual input elements for the activation for the respective class
-    - CAMs are based on the gradient of a class activation $f_\theta(x)_i$ w.r.t. the input $\frac{\partial f_\theta(x)_i}{\partial x}$
+    - CAMs are based on the gradient of a class activation w.r.t. the input $\frac{\partial f_\theta(x)_{class}}{\partial x}$
     - smoothgrad leads to better CAMs by averaging over the gradients for $n$ noisy versions of the input
 - smoothgrad paper: https://arxiv.org/pdf/1706.03825.pdf
 
