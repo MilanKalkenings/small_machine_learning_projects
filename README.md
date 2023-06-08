@@ -3,6 +3,7 @@
     - CAMs show the importance of the individual input elements for the activation for the respective class
     - CAMs are based on the gradient of a class activation w.r.t. the input $\frac{\partial f_\theta(x)_{class}}{\partial x}$
     - smoothgrad leads to better CAMs by averaging over the gradients for $n$ noisy versions of the input
+    - CAMs can be used to infer weakly supervised image segmentation labels from image classification
 - smoothgrad paper: https://arxiv.org/pdf/1706.03825.pdf
 
 ![mixed_smoothgrad](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/5663e4a4-bca8-4931-9fe3-a00049b17a0d)
