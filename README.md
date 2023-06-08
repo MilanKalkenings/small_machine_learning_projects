@@ -1,13 +1,3 @@
-# SmoothGrad CAM
-- implementation of regular class activation maps (CAM) and smoothgrad
-    - CAMs show the importance of the individual input elements for the activation for the respective class
-    - CAMs are based on the gradient of a class activation w.r.t. the input $\frac{\partial f_\theta(x)_{class}}{\partial x}$
-    - smoothgrad leads to better CAMs by averaging over the gradients for $n$ noisy versions of the input
-    - CAMs can be used to infer weakly supervised image segmentation labels from image classification
-- smoothgrad paper: https://arxiv.org/pdf/1706.03825.pdf
-
-![mixed_smoothgrad](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/5663e4a4-bca8-4931-9fe3-a00049b17a0d)
-
 # learning rate range test
 - implementation of learning rate range test (lrrt)
 - stable algorithm for determining learning rates (and other hyperparameters) in deep learning projects
@@ -149,6 +139,21 @@
 - visualization of positional encodings as used in Transformers
 
 ![pe](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/379a8d22-0a63-4a74-8fcf-937d84c8702f)
+
+# cam (+ smoothgrad + guided)
+- implementation of regular class activation maps (cam) 
+    - cams show the importance of the individual input elements for the activation for the respective class
+    - cams are based on the gradient of a class activation w.r.t. the input $\frac{\partial f_\theta(x)_{class}}{\partial x}$
+    - cams can e.g. be used for
+      - inferring weakly supervised labels
+      - model debugging
+      - deducting model design decisions
+- implementation of smoothgrad
+    - better cams by averaging over gradients for $n$ noisy versions of the input
+- implementation of guided cam
+    - better cams by only propagating positive gradients back 
+    
+![cam_smoothgrad_guided](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/b738bbeb-d18d-446a-9dd1-ba5c34d83f8f)
 
 
 # Consistency Regularization
