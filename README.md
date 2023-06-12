@@ -145,13 +145,13 @@
     - cams show the importance of the individual input elements for the activation for the respective class
     - cams are based on the gradient of a class activation w.r.t. the input $\frac{\partial f_\theta(x)_{class}}{\partial x}$
     - cams can e.g. be used for
-      - inferring weakly supervised labels
+      - inferring weakly supervised labels (here: bounding boxes from classification labels)
       - model debugging
       - deducting model design decisions
 - implementation of smoothgrad
     - better cams by averaging over gradients for $n$ noisy versions of the input
 - implementation of guided cam
-    - better cams by only propagating positive gradients back 
+    - better cams by only propagating positive gradients back
 - gradually masking out one object decreases its class score
     
 ![benchmark](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/160549b5-ae37-4e45-b4f7-0d848f31271d)
