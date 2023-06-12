@@ -152,8 +152,13 @@
     - better cams by averaging over gradients for $n$ noisy versions of the input
 - implementation of guided cam
     - better cams by only propagating positive gradients back 
+- gradually masking out one object decreases its class score
     
-![cam_smoothgrad_guided](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/b738bbeb-d18d-446a-9dd1-ba5c34d83f8f)
+![benchmark](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/160549b5-ae37-4e45-b4f7-0d848f31271d)
+
+![masking](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/d499bd84-ecbb-45b3-83a5-a6f8319a21d0)
+
+![probs](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/21416f03-d0ff-48d4-bb42-3164dff3824c)
 
 
 # Consistency Regularization
