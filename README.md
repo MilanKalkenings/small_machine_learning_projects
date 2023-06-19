@@ -118,6 +118,11 @@
     - if autoencoder is trained to reconstruct instances of data set X, it is likely to achieve good results on reconstructing instances of data set Y, if X and Y are similar enough. 
     - pretraining an encoder within an autoencoder, and later using it for as a feature learner in a classifier can speed up the training process, because the encoder already learned how to extract general features in the given data
     - a well trained autoencoder can be used to generate new data points that still contain the data signal, but add further noise (similar to data augmentation)
+- training a variational autoencoder on MNIST
+    - learns reparameterization
+        - $encoding=\mu + (\sigma \epsilon), \epsilon \textasciitilde \mathcal{N}(0,1)$
+        - $\mu=linear(encoding_{raw})$
+        - $\sigma=linear(encoding_{raw})$
 
 ![mnist_prediction](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/57d70258-c6c0-4cb6-ad52-e95729fadb1c)
 
