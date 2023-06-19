@@ -123,6 +123,8 @@
         - $encoding=\mu + (\sigma \epsilon), \epsilon \textasciitilde \mathcal{N}(0,1)$
         - $\mu=linear(encoding_{raw})$
         - $\sigma=exp(linear(encoding_{raw}))$
+    - visualization of PCA-reduced latent space
+    - visualization of multiple interpolation stages between two instances in latent space
 
 ![mnist_prediction](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/57d70258-c6c0-4cb6-ad52-e95729fadb1c)
 
