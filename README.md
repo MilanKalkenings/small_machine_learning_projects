@@ -71,7 +71,8 @@
     - $sign(\frac{\partial f(x)_{y}}{\partial x})):$ direction in which score for class $y$, increases
     - gradient is only a local approximation, so softmax score could increase for strong perturbations
 
-![fgsm.png](monitoring%2Fcarlini_wagner%2Ffgsm.png)
+![fgsm](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/8ecc4ac7-fa2c-4bc0-b38a-9a885ce7f5c3)
+
 
 
 # Faster R-CNN Object Detection
