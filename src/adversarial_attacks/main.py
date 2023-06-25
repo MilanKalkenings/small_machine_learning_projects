@@ -13,7 +13,7 @@ lamb = 0.1
 
 # load data
 trans = ToTensor()
-fish_img = Image.open("../../data/carlini_wagner/fish.JPEG")
+fish_img = Image.open("../../data/adversarial_attacks/fish.JPEG")
 x0 = torch.unsqueeze(trans(fish_img), dim=0)
 
 # create learnable input
@@ -37,5 +37,5 @@ numpy_array = torch.squeeze(x.data).permute(1, 2, 0).numpy()
 plt.imshow(numpy_array)
 plt.title(f"misclassified as flamingo, {len(preds)} carlini wagner iterations")
 
-plt.savefig("../../monitoring/carlini_wagner_attack/result.png")
-torch.save(torch.tensor(preds), "../../monitoring/carlini_wagner/preds")
+plt.savefig("../../monitoring/adversarial_attacks/result.png")
+torch.save(torch.tensor(preds), "../../monitoring/adversarial_attacks/preds")

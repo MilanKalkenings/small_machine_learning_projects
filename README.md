@@ -56,15 +56,23 @@
 - data set: [turkey and syria earthquake tweets](https://www.kaggle.com/datasets/swaptr/turkey-earthquake-tweets)
 
 
-# Carlini-Wagner Attack
-- resnet trained on image net
-- carlini wagner attack to create adversarial example of a gold fish to be misclassified as a flamingo
+# Adversarial Attacks
+- carlini wagner attack (targeted attack)
     - target class $t$: flamingo
-    - change $x$ using gradient descent so that its predicted class probability is at least $\kappa$ bigger than that of the second most likely class
-    - makes $x$ and $x_0$ more similar to each other, if the softmax output is of the desired form
+    - change $x$ using gradient descent so that target probability is at least $\kappa$ bigger than second biggest probability
+    - makes $x$ and $x_0$ more similar to each other, if softmax output is of desired form
     - carlini wagner criterion: $max(-\kappa, \underset{j\neq t}{max}(p_j)-p_t) + ||x-x_0||^2_2$
 
 ![result](https://user-images.githubusercontent.com/70267800/222924302-8e901e6d-092e-43d3-a249-1b3f8a269982.png)
+
+- fast gradient sign method (untargeted attack)
+    - goal: create $x_{fgsm}$ that is close to $x$ and leads to misclassification
+    - $x_{fgsm}=x - sign(\frac{\partial f(x)_{y}}{\partial x})) \cdot \epsilon$
+    - $sign(\frac{\partial f(x)_{y}}{\partial x})):$ direction in which score for class $y$, increases
+    - gradient is only a local approximation, so softmax score could increase for strong perturbations
+
+![fgsm.png](monitoring%2Fcarlini_wagner%2Ffgsm.png)
+
 
 # Faster R-CNN Object Detection
 - detecting litter objects on forest floor
