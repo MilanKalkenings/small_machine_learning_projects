@@ -69,7 +69,7 @@
     - goal: create $x_{fgsm}$ that is close to $x$ and leads to misclassification
     - $x_{fgsm}=x - sign(\frac{\partial f(x)_{y}}{\partial x})) \cdot \epsilon$
     - $sign(\frac{\partial f(x)_{y}}{\partial x})):$ direction in which score for class $y$, increases
-    - gradient is only a local approximation, so softmax score could increase for strong perturbations
+    - strong perturbations can make $x_{fgsm}$ OOD and can lead to even higher class score, because gradient is only local approximation 
 
 ![fgsm](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/8ecc4ac7-fa2c-4bc0-b38a-9a885ce7f5c3)
 
