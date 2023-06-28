@@ -87,6 +87,14 @@
 
 ![all](https://user-images.githubusercontent.com/70267800/226890943-c7033e17-96a2-4cd2-b8e3-b496267a3bd3.png)
 
+# Unsupervised Classification Support
+- semi supervised training with cross entropy and unsupervised support
+- unsupervised support:
+  - loss functions that can be calculated on unlabeled data points 
+  - mutual exclusivity loss: forces model to draw decision boundaries through regions with low density in feature space by favoring low entropy predictions
+  - stability loss: forces model to make similar predictions for $n$ augmented versions of the same data point
+
+
 # Transfer Learning with U-Net
 - implementation of a (small) unet architecture
     - U-Nets have two main components:
