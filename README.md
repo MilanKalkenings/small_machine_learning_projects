@@ -94,6 +94,9 @@
   - mutual exclusivity loss: forces model to draw decision boundaries through regions with low density in feature space by favoring low entropy predictions
   - stability loss: forces model to make similar predictions for $n$ augmented versions of the same data point
 
+![vanilla.png](monitoring%2Funsupervised_classification_support%2Fvanilla.png)
+
+![both.png](monitoring%2Funsupervised_classification_support%2Fboth.png)
 
 # Transfer Learning with U-Net
 - implementation of a (small) unet architecture
