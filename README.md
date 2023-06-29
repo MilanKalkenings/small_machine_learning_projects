@@ -89,10 +89,12 @@
 
 # Unsupervised Classification Support
 - semi supervised training with cross entropy and unsupervised support
-- unsupervised support:
-  - loss functions that can be calculated on unlabeled data points 
-  - mutual exclusivity loss: forces model to draw decision boundaries through regions with low density in feature space by favoring low entropy predictions
-  - stability loss: forces model to make similar predictions for $n$ augmented versions of the same data point
+- unsupervised support: loss functions that can be calculated on unlabeled data points
+- **stability loss**: favors similar predictions for $n$ augmented versions of same data point
+    - risk: trivial solution is to always predict the same vector
+- **mutual exclusivity loss**: favors to low-entropy softmax outputs
+    - leads to decision boundary through low-density regions in feature space
+    - prevents trivial solution for stability loss
 
 <img width="358" alt="table" src="https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/32f75c6f-aadc-4313-99d6-8daa5376fca2">
 
