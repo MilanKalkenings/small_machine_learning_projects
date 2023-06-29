@@ -163,6 +163,19 @@
 ![f1](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/acc58d9c-1ec0-4be0-812c-9a758eca1aa5)
 
 
+# Meta Learning
+- meta learning with REPTILE:
+1. sample a task from a set of tasks
+2. for few iterations, update model parameters on sampled task
+3. repeat 1. and 2. until model performs well over all tasks
+
+\begin{tabular}{ccc}
+& \text{seen data, seen task} & \text{seen data, new task} \\
+\hline
+\text{test accuracy after REPTILE} & 0.78 & 0.46 \\
+\text{test accuracy one shot} & 0.98 & 0.88 \\
+\end{tabular}
+
 # Positional Encoding
 - visualization of positional encodings as used in Transformers
 
