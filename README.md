@@ -1,3 +1,17 @@
+# Semi-Supervised Clustering (Cluster-Then-Label)
+- highly related to k-means, but with supervised guidance
+- given: few labeled data points, many unlabeled data points (from approx. same distribution)
+- perform clustering, align clusters to respect class labels, and predict according to the majority class per cluster
+    - objective function = mean distance to cluster center + $\alpha$ class impurity per cluster
+    1. initiate cluster centers
+    2. unsupervised: assign data points to closest cluster center
+    3. supervised: move labeled data point to other cluster, if that minimizes objective function
+    4. cluster_center = mean(cluster)
+    5. repeat 2. - 4. until no improvement in objective fnction is achieved
+    
+![results](https://user-images.githubusercontent.com/70267800/236207413-5b3ca6a7-4a30-48aa-a4da-e3e4aa04b0a3.png)
+
+
 # learning rate range test
 - implementation of learning rate range test (lrrt)
 - stable algorithm for determining learning rates (and other hyperparameters) in deep learning projects
@@ -119,20 +133,6 @@
     4. repeat 1. to 3. until no improvement is achieved on validation data
   
 ![accs](https://user-images.githubusercontent.com/70267800/236207235-c03f8263-1805-42b0-b03e-b9c4edc17117.png)
-
-# Semi-Supervised Clustering (Cluster-Then-Label)
-- highly related to k-means, but with supervised guidance
-- given: few labeled data points, many unlabeled data points (from approx. same distribution)
-- perform clustering, align clusters to respect class labels, and predict according to the majority class per cluster
-    - objective function = mean distance to cluster center + $\alpha$ class impurity per cluster
-    1. initiate cluster centers
-    2. unsupervised: assign data points to closest cluster center
-    3. supervised: move labeled data point to other cluster, if that minimizes objective function
-    4. cluster_center = mean(cluster)
-    5. repeat 2. - 4. until no improvement in objective fnction is achieved
-    
-![results](https://user-images.githubusercontent.com/70267800/236207413-5b3ca6a7-4a30-48aa-a4da-e3e4aa04b0a3.png)
-
 
 # Autoencoder
 - training an autoencoder on MNIST and CIFAR100
