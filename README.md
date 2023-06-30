@@ -168,9 +168,7 @@
     1. sample a task from a set of tasks
     2. for few iterations, update model parameters on sampled task
     3. repeat 1. and 2. until model performs well over all tasks
-- reptile pretraining improves one shot results
-    - 31% one shot test accuracy without reptile pretraining
-    - 84% one shot test accuracy with reptile pretraining
+- reptile pretraining improves one shot results on data and task similar enough to reptile tasks
   
 <img width="557" alt="reptile" src="https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/e9af08e0-64ee-4d98-883c-657ed29001eb">
 
