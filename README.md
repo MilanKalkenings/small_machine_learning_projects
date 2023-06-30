@@ -171,8 +171,8 @@
 - reptile pretraining improves one shot results
     - 31% one shot test accuracy without reptile pretraining
     - 84% one shot test accuracy with reptile pretraining
-
-<img width="563" alt="reptile" src="https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/1afdbac5-1088-4007-b768-057a1b3fd9ed">
+  
+<img width="557" alt="reptile" src="https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/e9af08e0-64ee-4d98-883c-657ed29001eb">
 
 
 # Positional Encoding
