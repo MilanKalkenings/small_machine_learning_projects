@@ -104,10 +104,10 @@
 # Unsupervised Classification Support
 - semi supervised training with cross entropy and unsupervised support
 - unsupervised support: loss functions that can be calculated on unlabeled data points
-- **stability loss**: favors similar predictions for $n$ augmented versions of same data point
+- **stability loss**: $\lambda d(f(x), f(x_{aug}))$ favors similar softmax outputs for $n$ augmented versions of same data point
     - risk: trivial solution is to always predict the same vector
     - also called consistency regularization, because it biases model towards similar softmax outputs and thus bigger training error)
-- **mutual exclusivity loss**: favors to low-entropy softmax outputs
+- **mutual exclusivity loss**: favors low-entropy softmax outputs
     - leads to decision boundary through low-density regions in feature space
     - prevents trivial solution for stability loss
 
