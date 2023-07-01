@@ -106,11 +106,16 @@
 - unsupervised support: loss functions that can be calculated on unlabeled data points
 - **stability loss**: favors similar predictions for $n$ augmented versions of same data point
     - risk: trivial solution is to always predict the same vector
+    - also called consistency regularization, because it biases model towards similar softmax outputs and thus bigger training error)
 - **mutual exclusivity loss**: favors to low-entropy softmax outputs
     - leads to decision boundary through low-density regions in feature space
     - prevents trivial solution for stability loss
 
 <img width="358" alt="table" src="https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/32f75c6f-aadc-4313-99d6-8daa5376fca2">
+
+![vary_lambda](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/75c0e4dd-c9c9-484f-8135-8d86b0fc305e)
+
+
 
 
 # Transfer Learning with U-Net
@@ -198,12 +203,6 @@
 
 ![probs](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/21416f03-d0ff-48d4-bb42-3164dff3824c)
 
-
-# Consistency Regularization
-- unlabeled data points still belong to the same category as perturbated versions of themselves
-- regularizer $\lambda ||f(x) - f(x_{augmented})||^2_2$ forces the model to predict similar outputs for $x$ and $x_{augmented}$ 
-
-![vary_lambda](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/75c0e4dd-c9c9-484f-8135-8d86b0fc305e)
 
 # Multiple Instance Learning
 - weakly supervised method: 
