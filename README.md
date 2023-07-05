@@ -62,13 +62,16 @@
 - performed 10 runs to compare monte carlo ensembles of different size with a normal dropout baseline
 ![mcd_accuracies](https://user-images.githubusercontent.com/70267800/213738311-6a15cfe2-e859-4809-aad2-c9d925c783b4.png)
 
-# BERT MLM
-- fine tuning of a pretrained bert model with masked language modeling (mlm)
+# Self Supervised Training
+- masked language modeling (mlm) with bert
     - texts are split into tokens ((sub-) words)
     - each token is masked with a certain probability (usually 15%)
-    - model "fills the gaps" with tokens (simple classification to check if the predicted token is correct)
-- data set: [turkey and syria earthquake tweets](https://www.kaggle.com/datasets/swaptr/turkey-earthquake-tweets)
+    - model "fills the gaps" with tokens (simple classification to check if predicted token is correct)
+- rotation detection with rezero-cnn
+    - images are rotated by 0, 90, 180, 270 degrees, model predicts respective class (4 class classification)
+    - detecting that a truck is rotated by 90 degrees demands basic knowledge about the concept "truck"
 
+![results.png](monitoring%2Fbert_mlm%2Fresults.png)
 
 # Adversarial Attacks
 - carlini wagner attack (targeted attack)
