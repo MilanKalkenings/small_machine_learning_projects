@@ -171,15 +171,15 @@
 ![f1](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/acc58d9c-1ec0-4be0-812c-9a758eca1aa5)
 
 
-# Meta Learning
-- meta learning with reptile:
-    1. sample a task from a set of tasks
-    2. for few iterations, update model parameters on sampled task
-    3. repeat 1. and 2. until model performs well over all tasks
-- reptile pretraining improves one shot results on data and task similar enough to reptile tasks
+# Reptile
+- reptile meta learning:
+    1. sample small batch of tasks from task set
+    2. for each task train copy of meta model on sampled task for few iterations 
+    3. update meta model with average of trained copies
+    4. repeat 1. - 3. until model performs well over all tasks
+- reptile pretraining improves few shot results on data and task similar enough to reptile tasks
   
-<img width="557" alt="reptile" src="https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/e9af08e0-64ee-4d98-883c-657ed29001eb">
-
+![reptile.png](monitoring%2Fmeta_learning%2Freptile.png)
 
 # Positional Encoding
 - visualization of positional encodings as used in Transformers
