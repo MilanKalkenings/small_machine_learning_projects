@@ -12,7 +12,7 @@
 ![results](https://user-images.githubusercontent.com/70267800/236207413-5b3ca6a7-4a30-48aa-a4da-e3e4aa04b0a3.png)
 
 
-# learning rate range test
+# Learning Rate Range Test
 - implementation of learning rate range test (lrrt)
 - stable algorithm for determining learning rates (and other hyperparameters) in deep learning projects
 - naive comparison between initial and last batch loss can fail to detect best lr due to variance in the batch losses
@@ -71,7 +71,8 @@
     - images are rotated by 0, 90, 180, 270 degrees, model predicts respective class (4 class classification)
     - detecting that a truck is rotated by 90 degrees demands basic knowledge about the concept "truck"
 
-![results.png](monitoring%2Fbert_mlm%2Fresults.png)
+![results](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/1600e994-74f6-4d99-8146-94ea2be97c7c)
+
 
 # Adversarial Attacks
 - carlini wagner attack (targeted attack)
@@ -139,6 +140,7 @@
     2. predict labels of unlabeled data points
     3. add data point(s) with most confident prediction to labeled training set
     4. repeat 1. to 3. until no improvement is achieved on validation data
+- possible in transductive setting (treat test datapoints as unlabeled training data points)
   
 ![accs](https://user-images.githubusercontent.com/70267800/236207235-c03f8263-1805-42b0-b03e-b9c4edc17117.png)
 
@@ -175,11 +177,12 @@
 - reptile meta learning:
     1. sample small batch of tasks from task set
     2. for each task train copy of meta model on sampled task for few iterations 
-    3. update meta model with average of trained copies
-    4. repeat 1. - 3. until model performs well over all tasks
+    3. update meta model with average of parameter updates of copy models
+    4. repeat 1. - 3. until meta model performs well over all tasks
 - reptile pretraining improves few shot results on data and task similar enough to reptile tasks
   
-![reptile.png](monitoring%2Fmeta_learning%2Freptile.png)
+<img width="344" alt="reptile" src="https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/bc7ddf0d-b7f0-4c9e-8377-5c7eb35527ae">
+
 
 # Positional Encoding
 - visualization of positional encodings as used in Transformers
