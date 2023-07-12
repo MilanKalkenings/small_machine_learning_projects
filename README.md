@@ -11,6 +11,11 @@
     
 ![results](https://user-images.githubusercontent.com/70267800/236207413-5b3ca6a7-4a30-48aa-a4da-e3e4aa04b0a3.png)
 
+# Frameworks
+- optuna hyperparameter optimization
+    - optimizes trial score (validation loss, validation acc, ...) over $n$ trials, each trial is a run with a certain hyperparameter set
+    - narrows hyperparameter search space based on past trial scores (focuses on regions that lead to better scores)
+    - aborts unpromising trials via early stopping
 
 # Learning Rate Range Test
 - implementation of learning rate range test (lrrt)
