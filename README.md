@@ -160,22 +160,28 @@
         - $\mu=linear(encoding_{raw})$
         - $\sigma=exp(linear(encoding_{raw}))$
     - visualization of PCA-reduced latent space
-    - visualization of multiple interpolation stages between two instances in latent space
+      
+<img width="412" alt="vae" src="https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/1483cc07-dc29-473a-bc99-918ddcc3734c">
 
-![mnist_prediction](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/57d70258-c6c0-4cb6-ad52-e95729fadb1c)
 
-# Fake News Feature Importance
-- simple feature engineering with tabular data
-    - number of words (title and body)
-    - number of exclamation marks (title and body)
-    - number of question marks (title and body)
-    - lexical diversity (title and body)
-    - $\frac{\text{number of title words}}{\text{number of title words} + \text{number of body words}}$
-- feature importance evaluation with random forest
-- good resuls can already be achieved by using only 1 feature
-- further sklearn mechanics used (stacking ensemble, gridsearch)
+# Feature Importance
+- fake news detection (feature engineering, random forest feature importance & selection
+    - feature engineering
+        - number of words (title and body)
+        - number of exclamation marks (title and body)
+        - number of question marks (title and body)
+        - lexical diversity (title and body)
+        - $\frac{\text{number of title words}}{\text{number of title words} + \text{number of body words}}$
+    - random forest feature importance and respective feature selection
+        - good resuls can already be achieved by using only 1 feature
+        - further sklearn mechanics used (stacking ensemble, gridsearch)
 
 ![f1](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/acc58d9c-1ec0-4be0-812c-9a758eca1aa5)
+
+- co2 emission time series forecasting for rwanda based on chem-sensor data at varying locations
+    - discretization and one-hot encoding of numerical data
+    - catboost feature importance and respective feature selection
+    - optuna hyperparameter tuning 
 
 
 # Reptile
