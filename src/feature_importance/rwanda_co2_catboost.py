@@ -5,7 +5,7 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.metrics import mean_squared_error
 import math
 from sklearn.ensemble import RandomForestRegressor
-from rwanda_co2_catboost import CatBoostRegressor
+from catboost import CatBoostRegressor
 import pickle
 import optuna
 import logging
@@ -156,7 +156,7 @@ class OptuneObjective:
 
 
 cat_cols = ["year", "week_no"]
-df_train_val = pd.read_csv("C:/datasets/rwanda_co2/train.csv").sample(frac=1)
+df_train_val = pd.read_csv("C:/datasets/rwanda_co2/train.csv")# .sample(frac=1)
 df_test = pd.read_csv("C:/datasets/rwanda_co2/test.csv")
 ids_test = df_test["ID_LAT_LON_YEAR_WEEK"]
 df_test.drop(labels=["ID_LAT_LON_YEAR_WEEK"], inplace=True, axis=1)
