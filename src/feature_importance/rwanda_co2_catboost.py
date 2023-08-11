@@ -12,30 +12,39 @@ import logging
 
 
 class Encoder:
+    """
+    wrapper for sklearn.preprocessing.OneHotEncoder.
+    transform returns pd.DataFrame instead of numpy array
+    """
     def __init__(self):
-        pass
+        self.encoder = OneHotEncoder(handle_unknown="ignore", sparse=False)
 
     def fit(self, df: pd.DataFrame):
-        self.feature_names = df.columns
-        encoders = {}
-        for feature_name in self.feature_names:
-            encoder = OneHotEncoder(handle_unknown="ignore", sparse_output=False)
-            encoder.fit(df[feature_name].values.reshape(-1, 1))
-            encoders[feature_name] = encoder
-        self.encoders = encoders
+        """
+        fits OneHotEncoder to all columns in <df>.
+
+        :param df: dataframe with only categorical (including discretized numerical) feature columns.
+        :return:
+        """
+        self.encoder.fit(df)
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
-        preprocessed = []
-        for feature_name in self.feature_names:
-            feature = df[feature_name].values.reshape(-1, 1)
-            feature_encoded = self.encoders[feature_name].transform(feature)
-            encoded_feature_names = []
-            for i in range(len(feature_encoded[0])):
-                encoded_feature_names.append(feature_name + "_" + str(i + 1))
-            preprocessed.append(pd.DataFrame(data=feature_encoded,
-                                             columns=encoded_feature_names))
-        return pd.concat(preprocessed, axis=1)
+        """
+        one-hot encodes every column in <df>. values in <df> that haven't been seen in self.fit
+        are ignored, i.e. they will not form a new column.
 
+        :param df: dataframe with only categorical (including discretized numerical) feature columns.
+        :return: dataframe with more columns than the input <df>,
+        because one column per unique value in the feature columns is created.
+        new columns are named <original_col>_i for all i unique values of the original feature
+        """
+        col_values_encoded = self.encoder.transform(df)
+        col_names = self.encoder.get_feature_names_out()
+        return pd.DataFrame(data=col_values_encoded, columns=col_names)
+
+    def fit_transform(self, df: pd.DataFrame) -> pd.DataFrame:
+        self.fit(df)
+        return self.transform(df)
 
 class Discretizer:
     def __init__(self):
@@ -111,7 +120,20 @@ class OptuneObjective:
             print("features used:", len(features_used))
             if model_class == "cb":
                 lr = trial.suggest_float(name="lr", low=self.lr_range[0], high=self.lr_range[1])
-                model = CatBoostRegressor(learning_rate=lr, verbose=False, random_state=0)
+                l2 = trial.suggest_float(name="l2_leaf_reg", low=1, high=10)
+                max_depth = trial.suggest_int(name="max_depth", low=6, high=10)
+                n_estimators = trial.suggest_int(name="n_estimators", low=100, high=1000)
+                subsample = trial.suggest_float(name="subsample", low=0.5, high=0.9)
+
+                model = CatBoostRegressor(
+                    learning_rate=lr,
+                    max_depth=max_depth,
+                    n_estimators=n_estimators,
+                    l2_leaf_reg=l2,
+                    subsample=subsample,
+
+                    verbose=False,
+                    random_state=0)
             else:
                 model = RandomForestRegressor(random_state=0)
             model.fit(self.x_train[features_used], self.y_train)
@@ -168,6 +190,7 @@ df_train.reset_index(inplace=True, drop=True)
 df_val = df_train_val[-int((len(df_train_val) * 0.8)):]
 df_val.reset_index(inplace=True, drop=True)
 
+
 # fit_transform training data
 y_train = df_train["emission"].values
 x_train = df_train.drop(labels=["emission"], inplace=False, axis=1)
@@ -177,8 +200,7 @@ discretizer.fit(df_numeric=x_train_num)
 x_train_num_discrete = discretizer.transform(df_numeric=x_train_num)
 x_train_full = pd.concat([x_train_num_discrete, x_train[cat_cols]], axis=1)
 encoder = Encoder()
-encoder.fit(x_train_full)
-x_train_onehot = encoder.transform(x_train_full).astype(int)
+x_train_onehot = encoder.fit_transform(x_train_full).astype(int)
 x_train_onehot = pd.concat([x_train_onehot, x_train_num.fillna(np.nanmin(x_train_num.values) -1000000)], axis=1)
 
 # transform val data
@@ -208,25 +230,26 @@ optuna.logging.disable_default_handler()
 optuna_objective = OptuneObjective(x_train=x_train_onehot, y_train=y_train, x_val=x_val_onehot, y_val=y_val)
 sampler = optuna.samplers.TPESampler()
 study = optuna.create_study()
-study.optimize(func=optuna_objective, n_trials=100, n_jobs=1)
+study.optimize(func=optuna_objective, n_trials=1000, n_jobs=1)
 with open("../frameworks/study.pkl", 'wb') as f:
     pickle.dump(study, f)
 
 
-# prepare submission
-with open("../frameworks/study.pkl", 'rb') as f:
-    study = pickle.load(f)
+# prepare submission with hp determined by optuna
 with open("../../monitoring/feature_importance/features_best.pkl", 'rb') as f:
     features_best = pickle.load(f)
 ensemble_size = 30
 preds = np.zeros(shape=len(df_test))
 for i in range(ensemble_size):
     print("train & predict with ensemble member", i + 1)
-    params_best = study.best_params
-    if params_best["model_class"] == "cb":
-        model_best = CatBoostRegressor(learning_rate=params_best["lr"], verbose=False, random_state=i)
-    else:
-        model_best = RandomForestRegressor(random_state=i)
+    model_best = CatBoostRegressor(
+        learning_rate=0.02837000454603956,
+        l2_leaf_reg=1.3892743024148437,
+        max_depth=10,
+        n_estimators=975,
+        subsample=0.5353082854045565,
+        verbose=False,
+        random_state=i)
     model_best.fit(X=pd.concat((x_train_onehot[features_best], x_val_onehot[features_best]), axis=0), y=np.concatenate((y_train, y_val)))  # retrain on train & val
     pred = model_best.predict(x_test_onehot[features_best])
     preds += pred
