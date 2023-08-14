@@ -220,6 +220,13 @@
 
 ![probs](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/21416f03-d0ff-48d4-bb42-3164dff3824c)
 
+# Active Learning
+- pistachio type prediction, 10 initial labeled instances, model queries next label per
+    - baseline: label a random unlabeled instance
+    - min_confidence: label unlabeled instance that has lowest prediction maximal class probability (approximation of prediction entropy)
+- min_confidence policy leads to higher val accuracy mean and smaller val accuracy std 
+      
+![results](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/6c31cf0b-9d25-4989-a2fd-0f695db537ff)
 
 # Multiple Instance Learning
 - weakly supervised method: 
