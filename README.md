@@ -224,9 +224,11 @@
 - pistachio type prediction, 10 initial labeled instances, model queries next label per
     - baseline: label a random unlabeled instance
     - min_confidence: label unlabeled instance that has lowest prediction maximal class probability (approximation of prediction entropy)
-- min_confidence policy leads to higher val accuracy mean and smaller val accuracy std 
-      
-![results](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/6c31cf0b-9d25-4989-a2fd-0f695db537ff)
+- informative initial labeled instances are chosen per "exploration"-paradigm (centers of training data clusters approximately represent the training data best)
+- min_confidence policy leads to higher val accuracy mean and smaller val accuracy std when informative initial labeled instances are used (otherwise even worse than random)
+
+![results](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/70ca7637-0024-4d43-a848-61d69326753f)
+
 
 # Multiple Instance Learning
 - weakly supervised method: 
