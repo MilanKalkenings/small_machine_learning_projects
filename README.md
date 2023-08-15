@@ -221,10 +221,10 @@
 ![probs](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/21416f03-d0ff-48d4-bb42-3164dff3824c)
 
 # Active Learning
-- pistachio type prediction, 10 initial labeled instances, model queries next label per
+- pistachio type prediction, 4 initially labeled instances, model queries next label per
     - baseline: label a random unlabeled instance
-    - min_confidence: label unlabeled instance that has lowest prediction maximal class probability (approximation of prediction entropy)
-- informative initial labeled instances are chosen per "exploration"-paradigm (centers of training data clusters approximately represent the training data best)
+    - min_confidence: label unlabeled instance that has lowest predicted max. class confidence (approximation of prediction entropy)
+- informative initially labeled instances are chosen as training data clusters centers (approx. represent training data best; exploration-paradigm)
 - min_confidence policy leads to higher val accuracy mean and smaller val accuracy std when informative initial labeled instances are used (otherwise even worse than random)
 
 ![results](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/70ca7637-0024-4d43-a848-61d69326753f)
