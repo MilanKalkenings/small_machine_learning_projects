@@ -28,7 +28,7 @@ def determine_start_indices_kmeans(x: np.ndarray, startsize: int) -> List[int]:
     because instances in <x> closest to cluster
     centers approximately represent <x>.
     """
-    kmeans = KMeans(n_clusters=startsize)  # startsize < endsize (x has endsize many entries)
+    kmeans = KMeans(n_clusters=startsize, n_init=3)  # startsize < endsize (x has endsize many entries)
     kmeans.fit(x)
     centers = kmeans.cluster_centers_
     indices = []
@@ -90,21 +90,21 @@ def active_learning(
         cls = RandomForestClassifier(random_state=seed, n_estimators=30)
         cls.fit(x_train[indices_used], y_train[indices_used])
         accs.append(accuracy_score(y_true=y_val, y_pred=cls.predict(x_val)))
-        indices_used = labeling_policy(x=x_train, indices_used=indices_used, extent_size=stepsize, cls=cls)
+        indices_used = labeling_policy(x=x_train, indices_used=indices_used, extend_size=stepsize, cls=cls)
     return accs
 
 
 ##### hyperparameters #####
-stepsize = 25  # 5
-startsize = 10  # 100
-endsize = 200  # < 1718
+stepsize = 2  # 5
+startsize = 4  # 100
+endsize = 100  # < 1718
 val_size = 1000
-n_seeds = 40
+n_seeds = 30
 
 
 ##### load data #####
 # https://www.kaggle.com/datasets/amirhosseinmirzaie/pistachio-types-detection
-df = pd.read_csv("pistachio.csv").sample(frac=1)
+df = pd.read_csv("C:/Users/milan/Desktop/pistachio/pistachio.csv")
 label_encoder = LabelEncoder()
 df["Class"] = label_encoder.fit_transform(df["Class"])
 df_train = df[:endsize]
@@ -119,12 +119,15 @@ del df_val
 
 
 ##### active learning #####
-indices_start = list(range(startsize))  # determine_start_indices_kmeans(x=inputs_train, startsize=startsize)
 accs_random = []
-accs_max_entropy = []
 accs_min_confidence = []
+accs_random_r = []
+accs_min_confidence_r = []
 for seed in range(n_seeds):
     random.seed(seed)
+    np.random.seed(seed=seed)
+    # with informative start
+    indices_start = determine_start_indices_kmeans(x=inputs_train, startsize=startsize)
     print("seed", seed + 1)
     accs_random.append(active_learning(
         x_train=inputs_train,
@@ -146,23 +149,54 @@ for seed in range(n_seeds):
         indices_start=copy.deepcopy(indices_start),
         labeling_policy=extend_min_confidence_indices_,
         seed=seed))
+    # with random start
+    indices_start = extend_random_indices_(x=inputs_train, indices_used=[], extend_size=startsize, cls=None)
+    accs_random_r.append(active_learning(
+        x_train=inputs_train,
+        y_train=targets_train,
+        x_val=inputs_val,
+        y_val=targets_val,
+        stepsize=stepsize,
+        endsize=endsize,
+        indices_start=copy.deepcopy(indices_start),
+        labeling_policy=extend_random_indices_,
+        seed=seed))
+    accs_min_confidence_r.append(active_learning(
+        x_train=inputs_train,
+        y_train=targets_train,
+        x_val=inputs_val,
+        y_val=targets_val,
+        stepsize=stepsize,
+        endsize=endsize,
+        indices_start=copy.deepcopy(indices_start),
+        labeling_policy=extend_min_confidence_indices_,
+        seed=seed))
 accs_random = np.array(accs_random)
-accs_max_entropy = np.array(accs_max_entropy)
 accs_min_confidence = np.array(accs_min_confidence)
+accs_random_r = np.array(accs_random_r)
+accs_min_confidence_r = np.array(accs_min_confidence_r)
 
 
 ##### plot results #####
 x_axis = torch.arange(start=startsize, step=stepsize, end=endsize)
+
+mean_random_r = np.mean(accs_random_r, axis=0)
+std_random_r = np.std(accs_random_r, axis=0)
+plt.fill_between(x_axis, mean_random_r - std_random_r, mean_random_r + std_random_r, color="red", label="random policy, random start", alpha=0.2)
+
 mean_random = np.mean(accs_random, axis=0)
 std_random = np.std(accs_random, axis=0)
-plt.fill_between(x_axis, mean_random - std_random, mean_random + std_random, color="blue", label="random policy", alpha=0.3)
+plt.fill_between(x_axis, mean_random - std_random, mean_random + std_random, color="orange", label="random policy, informative start", alpha=0.2)
+
+mean_min_confidence_r = np.mean(accs_min_confidence_r, axis=0)
+std_min_confidence_r = np.std(accs_min_confidence_r, axis=0)
+plt.fill_between(x_axis, mean_min_confidence_r - std_min_confidence_r, mean_min_confidence_r + std_min_confidence_r, color="blue", label="min confidence policy, random start", alpha=0.2)
 
 mean_min_confidence = np.mean(accs_min_confidence, axis=0)
 std_min_confidence = np.std(accs_min_confidence, axis=0)
-plt.fill_between(x_axis, mean_min_confidence - std_min_confidence, mean_min_confidence + std_min_confidence, color="green", label="min confidence policy", alpha=0.3)
+plt.fill_between(x_axis, mean_min_confidence - std_min_confidence, mean_min_confidence + std_min_confidence, color="green", label="min confidence policy, informative start", alpha=0.5)
 
-
-plt.legend(loc="upper left")
+plt.legend(loc="lower right")
 plt.xlabel("training data points")
 plt.ylabel(f"accuracy score (mean +/- std; {n_seeds} seeds)")
 plt.title("active learning\nlabeling policy comparison")
