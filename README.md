@@ -67,6 +67,12 @@
 - performed 10 runs to compare monte carlo ensembles of different size with a normal dropout baseline
 ![mcd_accuracies](https://user-images.githubusercontent.com/70267800/213738311-6a15cfe2-e859-4809-aad2-c9d925c783b4.png)
 
+# Tabnet
+- simple end-to-end trained boosting-like network for tabular data
+    - one head after each hidden representation, sum of head predictions is ensemble prediction
+
+![results](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/2d4d3479-a398-4326-8a5b-d84e46c19275)
+
 # Self Supervised Training
 - masked language modeling (mlm) with bert
     - texts are split into tokens ((sub-) words)
