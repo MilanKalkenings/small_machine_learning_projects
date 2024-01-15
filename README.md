@@ -11,6 +11,18 @@
     
 ![results](https://user-images.githubusercontent.com/70267800/236207413-5b3ca6a7-4a30-48aa-a4da-e3e4aa04b0a3.png)
 
+# Exploit "bandwagon effect" with classifier guidance  
+- bandwagon effect: LLM favors following (fictional) majority vote presented in prompt 
+- improved tweet classification by adding guidance from an external classifier to exploit bandwagon effect
+    - xgboost on tweet embeddings (baseline, 89% acc)
+    - LLM without guidance sentence (lower bound, 90% acc)
+    - LLM with xgboost pred guidance (93% acc)
+    - LLM with ground truth guidance (upper bound, 94% acc; not 100% so LLM doesn't simply rely on guidance)
+- setting a fixed fictional guidance to always favor positive/negative class doesn't lead to better recall/precision
+
+<img width="371" alt="prompt" src="https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/261bf411-e089-4319-a328-8f0003a11933">
+
+
 # Frameworks
 - optuna hyperparameter optimization
     - optimizes trial score (validation loss, validation acc, ...) over $n$ trials, each trial is a run with a certain hyperparameter set
