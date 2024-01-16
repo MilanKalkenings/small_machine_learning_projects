@@ -13,12 +13,9 @@
 
 # Exploit "bandwagon effect" with classifier guidance  
 - bandwagon effect: LLM favors following (fictional) majority vote presented in prompt 
-- improved tweet classification by adding guidance from an external classifier to exploit bandwagon effect
-    - xgboost on tweet embeddings (baseline, 89% acc)
-    - LLM without guidance sentence (lower bound, 90% acc)
-    - LLM with xgboost pred guidance (93% acc)
-    - LLM with ground truth guidance (upper bound, 94% acc; not 100% so LLM doesn't simply rely on guidance)
-- setting a fixed fictional guidance to always favor positive/negative class doesn't lead to better recall/precision
+- improved tweet classification by adding guidance from XGBoost to exploit bandwagon effect
+- XGBoost trained on embedded tweets
+- also tested: setting a fixed fictional guidance to always favor positive/negative class doesn't lead to better recall/precision
 
 <img width="499" alt="table" src="https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/a2830f1e-d1d3-4b66-9807-5db944799e06">
 
