@@ -20,6 +20,9 @@
     - LLM with ground truth guidance (upper bound, 94% acc; not 100% so LLM doesn't simply rely on guidance)
 - setting a fixed fictional guidance to always favor positive/negative class doesn't lead to better recall/precision
 
+<img width="499" alt="table" src="https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/a2830f1e-d1d3-4b66-9807-5db944799e06">
+
+
 <img width="371" alt="prompt" src="https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/261bf411-e089-4319-a328-8f0003a11933">
 
 
