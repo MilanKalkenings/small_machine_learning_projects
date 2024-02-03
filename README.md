@@ -3,7 +3,7 @@
 - splits query into multiple sub-queries
 - sub-queries are routed to query engine with most similar *caption*
 - responses to sub-queries are later fused to answer query
-- multiple query engines allow more fine grained distinction of information than jsut using metadata
+- multiple *captioned query engines* allow more fine grained distinction of information than jsut using metadata
 
 <img width="453" alt="sub_queries" src="https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/4c452b5d-6fb3-4489-a0fd-7061c508a156">
 
