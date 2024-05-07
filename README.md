@@ -243,6 +243,15 @@
 
 ![probs](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/21416f03-d0ff-48d4-bb42-3164dff3824c)
 
+
+# Token Classification For German PII Detection
+- semi-supervised versatile training data
+    - generated using text block augmented LLM prompts
+    - substrings are used to annotate text
+- allows detecting names in german natural language (probably not useful without grammatical structures)
+
+
+
 # Active Learning
 - pistachio type prediction, 4 initially labeled instances, model queries next label per
     - baseline: label a random unlabeled instance
