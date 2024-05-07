@@ -249,6 +249,8 @@
     - generated using text block augmented LLM prompts
     - substrings are used to annotate text
 - allows detecting names in german natural language (probably not useful without grammatical structures)
+    - fine tuned bert
+    - evaluation set is formed as sampled collection of edge cases
 
 
 
