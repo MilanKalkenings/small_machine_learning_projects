@@ -42,7 +42,7 @@
 
 # Learning Rate Range Test
 - implementation of learning rate range test (lrrt)
-- stable algorithm for determining learning rates (and other hyperparameters) in deep learning projects
+- stable algorithm for determining learning rates (and other hyperparameters) along a range of training batches
 - naive comparison between initial and last batch loss can fail to detect best lr due to variance in the batch losses
 
 1. define a set of lr candidates
