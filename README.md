@@ -7,6 +7,14 @@
 
 <img width="453" alt="sub_queries" src="https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/4c452b5d-6fb3-4489-a0fd-7061c508a156">
 
+# German Typos
+- generated faulty versions of text with typical fault patterns
+    - deletion/transposition/insertion/substitution typos ("und" -> "nd", "udn", "undd", "umd")
+    - keyboard layout based ("n" is closer to "m" so it is more likely to be a substitute)
+    - phonetics based ("Maier" -> "Meier")
+    - ocr based ("OvvISB`" -> "0w!58'")
+- trained sentence classifier (original text vs typo text), used word level gradcam to deduct word predictions
+ ![gradcam](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/191ef4ec-3450-49f2-8e13-df1a0af3780f)
 
 
 # Semi-Supervised Clustering (Cluster-Then-Label)
