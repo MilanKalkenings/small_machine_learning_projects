@@ -42,6 +42,27 @@
 <img width="371" alt="prompt" src="https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/261bf411-e089-4319-a328-8f0003a11933">
 
 
+# cam (+ smoothgrad + guided)
+- implementation of regular class activation maps (cam) 
+    - cams show the importance of the individual input elements for the activation for the respective class
+    - cams are based on the gradient of a class activation w.r.t. the input $\frac{\partial f_\theta(x)_{class}}{\partial x}$
+    - cams can e.g. be used for
+      - inferring weakly supervised labels (here: bounding boxes from classification labels)
+      - model debugging
+      - deducting model design decisions
+- implementation of smoothgrad
+    - better cams by averaging over gradients for $n$ noisy versions of the input
+- implementation of guided cam
+    - better cams by only propagating positive gradients back
+- gradually masking out one object decreases its class score
+    
+![benchmark](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/160549b5-ae37-4e45-b4f7-0d848f31271d)
+
+![masking](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/d499bd84-ecbb-45b3-83a5-a6f8319a21d0)
+
+![probs](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/21416f03-d0ff-48d4-bb42-3164dff3824c)
+
+
 # Frameworks
 - optuna hyperparameter optimization
     - optimizes trial score (validation loss, validation acc, ...) over $n$ trials, each trial is a run with a certain hyperparameter set
@@ -128,7 +149,6 @@
 ![fgsm](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/8ecc4ac7-fa2c-4bc0-b38a-9a885ce7f5c3)
 
 
-
 # Faster R-CNN Object Detection
 - detecting litter objects on forest floor
 - created data set
@@ -156,8 +176,6 @@
 ![vary_lambda](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/75c0e4dd-c9c9-484f-8135-8d86b0fc305e)
 
 
-
-
 # Transfer Learning with U-Net
 - implementation of a (small) unet architecture
     - U-Nets have two main components:
@@ -169,16 +187,24 @@
   1. adjusting upwards part with frozen pretrained downwards part
   2. end-to-end fine tuning of the downwards part and the upwards part
 
-# Self Training
-- given: few labeled data points, many unlabeled data points (from approx. same distribution)
-- iteratively add semi-supervised labels to the unlabeled data points
-    1. train model on labeled training set
-    2. predict labels of unlabeled data points
-    3. add data point(s) with most confident prediction to labeled training set
-    4. repeat 1. to 3. until no improvement is achieved on validation data
-- possible in transductive setting (treat test datapoints as unlabeled training data points)
-  
-![accs](https://user-images.githubusercontent.com/70267800/236207235-c03f8263-1805-42b0-b03e-b9c4edc17117.png)
+# Iterative Pseudo Labeling
+- self training:
+    - given: few labeled data points, many unlabeled data points (from approx. same distribution)
+    - iteratively add semi-supervised labels to the unlabeled data points
+        1. train model on labeled training set
+        2. predict labels of unlabeled data points
+        3. add data point(s) with most confident prediction to labeled training set
+        4. repeat 1. to 3. until no improvement is achieved on validation data
+    - possible in transductive setting (treat test datapoints as unlabeled training data points)
+- positive-unlabeled learning for labeling support:
+    - given: few labeled data points of positive class, many unlabeled data points
+    - goal: find members of positive class and hard negatives
+      1. train binary classifier (positive vs unlabeled)
+      2. manually label unlabeled data points with top k confidence for positive class to get positives and hard negatives
+      3. add labels to the training data and repeat until convergence
+     
+ ![pul](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/7ea0ac5b-34e0-4c01-9f48-b784fd0a554e)
+
 
 # Autoencoder
 - training an autoencoder on MNIST and CIFAR100
@@ -230,26 +256,6 @@
 - visualization of positional encodings as used in Transformers
 
 ![pe](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/379a8d22-0a63-4a74-8fcf-937d84c8702f)
-
-# cam (+ smoothgrad + guided)
-- implementation of regular class activation maps (cam) 
-    - cams show the importance of the individual input elements for the activation for the respective class
-    - cams are based on the gradient of a class activation w.r.t. the input $\frac{\partial f_\theta(x)_{class}}{\partial x}$
-    - cams can e.g. be used for
-      - inferring weakly supervised labels (here: bounding boxes from classification labels)
-      - model debugging
-      - deducting model design decisions
-- implementation of smoothgrad
-    - better cams by averaging over gradients for $n$ noisy versions of the input
-- implementation of guided cam
-    - better cams by only propagating positive gradients back
-- gradually masking out one object decreases its class score
-    
-![benchmark](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/160549b5-ae37-4e45-b4f7-0d848f31271d)
-
-![masking](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/d499bd84-ecbb-45b3-83a5-a6f8319a21d0)
-
-![probs](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/21416f03-d0ff-48d4-bb42-3164dff3824c)
 
 
 # Token Classification For German PII Detection
