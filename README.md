@@ -119,6 +119,21 @@
 - performed 10 runs to compare monte carlo ensembles of different size with a normal dropout baseline
 ![mcd_accuracies](https://user-images.githubusercontent.com/70267800/213738311-6a15cfe2-e859-4809-aad2-c9d925c783b4.png)
 
+# Entity Resolution
+- given: data set contains strings (variatons of song names)
+- goal: determine which strings represent the same real entity (song)
+1. organize strings graph structure to extract similarity features
+    - preferential attachment
+    - neighborhood similarity (Intersection over Union)
+    - clique similarity (Intersection over Union)
+    - token similarity (Intersection over Union)
+2. build training and evaluation data set, train a classifier
+    - use ER-blocking to mitigate runtime issues
+3. infer labels on new strings
+
+![Screenshot 2024-07-01 201522](https://github.com/MilanKalkenings/small_machine_learning_projects/assets/70267800/8f9b15fc-02f8-4e5f-b149-7aa06c2a12e7)
+
+
 # Self Supervised Training
 - masked language modeling (mlm) with bert
     - texts are split into tokens ((sub-) words)
